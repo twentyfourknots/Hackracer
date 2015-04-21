@@ -1,0 +1,78 @@
+
+int forwardspeed = 0;
+int revspeed= 1;
+int speed =100;
+int lsteer= 2;
+int rsteer = 3;
+
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode(forwardspeed, OUTPUT);
+pinMode(revspeed, OUTPUT);
+pinMode(lsteer, OUTPUT);
+pinMode(rsteer, OUTPUT);
+
+}
+
+void loop() {
+
+MoveF(1000);
+delay (2000);
+MoveB(1000);
+delay (1000);
+MoveLF (1000);
+delay (1000);
+MoveLB (1000);
+delay (1000);
+MoveRF(1000);
+delay (1000);
+MoveRB(1000);
+delay (1000);
+} 
+  
+void MoveF (int T){// Moves car forward 
+ analogWrite (forwardspeed, speed);
+ delay (T);
+ analogWrite (forwardspeed, LOW);
+ 
+}
+
+void MoveB (int T){//Moves car backwards becuse the drivepin is off
+ analogWrite(revspeed, speed);
+    delay (T);
+    analogWrite (revspeed, LOW);
+    delay (50);
+}
+void MoveLB (int T){//Moves car left
+analogWrite(revspeed, speed);
+ digitalWrite(lsteer, HIGH);
+    delay (T);
+    analogWrite (revspeed, LOW);
+    digitalWrite (lsteer, LOW);
+    delay (50);
+}
+void MoveLF (int T){//Moves car left
+analogWrite(forwardspeed, speed);
+ digitalWrite(lsteer, HIGH);
+    delay (T);
+    analogWrite (forwardspeed, LOW);
+    digitalWrite (lsteer, LOW);
+    delay (50);
+}
+void MoveRF (int T){//Moves car left
+analogWrite(forwardspeed, speed);
+ digitalWrite(rsteer, HIGH);
+    delay (T);
+    analogWrite (forwardspeed, LOW);
+    digitalWrite (rsteer, LOW);
+    delay (50);
+}
+void MoveRB (int T){//Moves car right and back
+analogWrite(revspeed, speed);
+ digitalWrite(rsteer, HIGH);
+    delay (T);
+    analogWrite (revspeed, LOW);
+    digitalWrite (rsteer, LOW);
+    delay (50);
+}
